@@ -32,16 +32,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable no-console */
 const core = __importStar(__nccwpck_require__(186));
-const wait_1 = __nccwpck_require__(817);
 async function run() {
     try {
-        const ms = core.getInput('milliseconds');
         const name = core.getInput('name');
         console.log(`ACTION NAME ${name} STARTED ....`);
         core.debug(`ACTION NAME ${name} STARTED ....`);
-        core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
         core.debug(new Date().toTimeString());
-        await (0, wait_1.wait)(parseInt(ms, 10));
         core.debug(new Date().toTimeString());
         core.setOutput('time', new Date().toTimeString());
     }
@@ -51,26 +47,6 @@ async function run() {
     }
 }
 run();
-
-
-/***/ }),
-
-/***/ 817:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.wait = void 0;
-async function wait(milliseconds) {
-    return new Promise(resolve => {
-        if (isNaN(milliseconds)) {
-            throw new Error('milliseconds not a number');
-        }
-        setTimeout(() => resolve('done!'), milliseconds);
-    });
-}
-exports.wait = wait;
 
 
 /***/ }),
