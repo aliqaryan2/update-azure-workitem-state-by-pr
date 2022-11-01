@@ -49,4 +49,3 @@ jobs:
         uses: ./
         with:
           name: 'MY TEST GH ACTION'
-          milliseconds: 1000
