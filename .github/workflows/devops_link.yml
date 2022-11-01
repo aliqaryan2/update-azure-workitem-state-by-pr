@@ -13,14 +13,12 @@ jobs:
         uses: dc-ag/azure-devops-pr-notification@v1.3.1
         with:
           repo-token: ${{ secrets.GH_PAT }}
-          devops-work-item-regex: "AB#[1-9]+" # Regex which gets applied to title, body and branch name
+          devops-work-item-regex: "[a-zA-Z0-9]*/([0-9]+)_.*" # Regex which gets applied to title, body and branch name
                                                              # (in this order) to find the DevOps Work Item Id (only 
                                                              # first match gets used)
           set-to-state: "Resolved" # The state you want the work item to be set to (exact string match). Keep empty to skip.
           dont-set-state-while-prs-open: true # Set to true if you don't want to set the state while GitHub PRs 
                                                # associated with the DevOps Work Item are still open
-          add-pr-link: true # Wheather you want to add the PR to DevOps (requires GitHub Integration into DevOps and 
-                            # the repo to be actively linked!)
           devops-organization: "shoelaceinc" # The url-slug of the devops organization
           devops-pat: ${{ secrets.DEVOPS_PAT }} # The Personal-Access-Token (PAT) to authorize the action to  
                                                 #  communicate with DevOps. As of now the PAT needs the following 
