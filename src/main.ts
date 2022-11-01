@@ -4,8 +4,11 @@ import {wait} from './wait'
 
 async function run(): Promise<void> {
   try {
-    console.log('Start Action ....!')
     const ms: string = core.getInput('milliseconds')
+    const name: string = core.getInput('name')
+
+    console.log(`ACTION NAME ${name} STARTED ....`)
+    core.debug(`ACTION NAME ${name} STARTED ....`)
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
     core.debug(new Date().toTimeString())
